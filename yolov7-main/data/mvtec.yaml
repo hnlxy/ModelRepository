@@ -1,0 +1,5 @@
+train: C:/yolov7-main/data/yolo_MVTec/images
+val: C:/yolov7-main/data/yolo_MVTec/images
+
+nc: 6
+names: ['bottle', 'grid', 'metal_nut', 'screw', 'toothbrush', 'zipper']
