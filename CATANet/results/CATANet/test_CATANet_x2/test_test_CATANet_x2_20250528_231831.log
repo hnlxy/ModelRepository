@@ -1,0 +1,81 @@
+2025-05-28 23:18:31,468 INFO: 
+                ____                _       _____  ____
+               / __ ) ____ _ _____ (_)_____/ ___/ / __ \
+              / __  |/ __ `// ___// // ___/\__ \ / /_/ /
+             / /_/ // /_/ /(__  )/ // /__ ___/ // _, _/
+            /_____/ \__,_//____//_/ \___//____//_/ |_|
+     ______                   __   __                 __      __
+    / ____/____   ____   ____/ /  / /   __  __ _____ / /__   / /
+   / / __ / __ \ / __ \ / __  /  / /   / / / // ___// //_/  / /
+  / /_/ // /_/ // /_/ // /_/ /  / /___/ /_/ // /__ / /<    /_/
+  \____/ \____/ \____/ \____/  /_____/\____/ \___//_/|_|  (_)
+    
+Version Information: 
+	BasicSR: 1.4.2
+	PyTorch: 2.7.0+cu118
+	TorchVision: 0.22.0+cpu
+2025-05-28 23:18:31,470 INFO: 
+  name: test_CATANet_x2
+  model_type: CATANetModel
+  scale: 2
+  num_gpu: 1
+  manual_seed: 3407
+  datasets:[
+    test_1:[
+      name: Set5
+      type: PairedImageDataset
+      dataroot_gt: datasets/Set5/HR
+      dataroot_lq: datasets/Set5/LR_bicubic/X2
+      filename_tmpl: {}x2
+      io_backend:[
+        type: disk
+      ]
+      phase: test
+      scale: 2
+    ]
+  ]
+  network_g:[
+    type: CATANet
+    upscale: 2
+  ]
+  path:[
+    pretrain_network_g: pretrained_models/x2.pth
+    strict_load_g: True
+    results_root: results/CATANet\test_CATANet_x2
+    log: results/CATANet\test_CATANet_x2
+    visualization: results/CATANet\test_CATANet_x2\visualization
+  ]
+  val:[
+    save_img: True
+    suffix: CATANet
+    metrics:[
+      psnr:[
+        type: calculate_psnr_pt
+        crop_border: 2
+        test_y_channel: True
+      ]
+      ssim:[
+        type: calculate_ssim_pt
+        crop_border: 2
+        test_y_channel: True
+      ]
+    ]
+  ]
+  dist: False
+  rank: 0
+  world_size: 1
+  auto_resume: False
+  is_train: False
+
+2025-05-28 23:18:31,470 INFO: Dataset [PairedImageDataset] - Set5 is built.
+2025-05-28 23:18:31,471 INFO: Number of test images in Set5: 5
+2025-05-28 23:18:31,483 INFO: Network [CATANet] is created.
+2025-05-28 23:18:31,589 INFO: Network: CATANet, with parameters: 477,435
+2025-05-28 23:18:31,589 INFO: #Params of CATANet: 477.4350 [K]
+2025-05-28 23:18:31,609 INFO: Loading CATANet model from pretrained_models/x2.pth, with param key: [params].
+2025-05-28 23:18:31,625 INFO: Model [CATANetModel] is created.
+2025-05-28 23:18:31,625 INFO: Testing Set5...
+2025-05-28 23:18:34,061 INFO: Validation Set5
+	 # psnr: 37.5940	Best: 37.5940 @ test_CATANet_x2 iter
+	 # ssim: 0.9592	Best: 0.9592 @ test_CATANet_x2 iter
+
