@@ -1,3 +1,7 @@
+# 图像分类
+
+本模型用于图像分类任务，支持多个主流数据集和网络结构。
+
 # Official YOLOv7
 
 Implementation of paper - [YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors](https://arxiv.org/abs/2207.02696)
