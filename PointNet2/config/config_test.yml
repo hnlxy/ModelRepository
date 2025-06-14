@@ -1,0 +1,32 @@
+# PointNet2 测试配置文件
+# Docker镜像配置
+dockerImage: harbor.yzai/cgf-ml-algorithm/ht/ultralytics:v1_flask
+
+# 脚本路径配置
+scriptPath: python algorithm/test_classification.py
+
+# 【必须保留】路径参数
+SHOW_PATH: /workspace/output/visualization
+TEST_FILE_PATH: /workspace/dataset/data/modelnet40_normal_resampled/modelnet40_test.txt
+RESULT_PATH: /workspace/output/results
+MODEL_PATH: /workspace/output/models
+
+# 测试参数
+BATCH_SIZE: 32
+NUM_POINT: 1024
+NUM_CLASSES: 40
+USE_NORMALS: true
+
+# 模型配置
+MODEL_NAME: pointnet2_cls_ssg
+
+# GPU配置
+USE_GPU: true
+GPU_ID: 0
+
+# 可视化配置
+SAVE_VISUALIZATION: true
+SHOW_CONFUSION_MATRIX: true
+
+# 其他配置
+WORKERS: 4

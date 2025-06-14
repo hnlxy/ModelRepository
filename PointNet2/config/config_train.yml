@@ -1,0 +1,42 @@
+# PointNet2 训练配置文件
+# Docker镜像配置
+dockerImage: harbor.yzai/cgf-ml-algorithm/ht/ultralytics:v1_flask
+
+# 脚本路径配置
+scriptPath: python algorithm/train_classification.py
+
+# 【必须保留】路径参数
+DATASET_ROOT_PATH: /workspace/dataset/data
+TASK_ROOT_PATH: /workspace
+TRAIN_FILE_PATH: /workspace/dataset/data/modelnet40_normal_resampled/modelnet40_train.txt
+VAL_FILE_PATH: /workspace/dataset/data/modelnet40_normal_resampled/modelnet40_test.txt
+LOG_PATH: /workspace/output/log/classification
+CHECKPOINT_PATH: /workspace/output/models
+
+# 训练超参数
+BATCH_SIZE: 24
+EPOCHS: 200
+LEARNING_RATE: 0.001
+OPTIMIZER: Adam
+DECAY_RATE: 1e-4
+WORKERS: 4
+
+# 模型参数
+MODEL_NAME: pointnet2_cls_ssg
+NUM_POINT: 1024
+NUM_CLASSES: 40
+USE_NORMALS: true
+
+# GPU配置
+USE_GPU: true
+GPU_ID: 0
+
+# 数据增强
+USE_RANDOM_ROTATION: true
+USE_RANDOM_JITTER: true
+USE_RANDOM_SCALE: true
+
+# 其他配置
+SAVE_BEST_MODEL: true
+EARLY_STOPPING_PATIENCE: 50
+VALIDATION_SPLIT: 0.1
